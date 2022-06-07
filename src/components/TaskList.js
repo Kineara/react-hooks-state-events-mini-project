@@ -1,9 +1,17 @@
 import React from "react";
+import Task from './Task';
 
-function TaskList() {
+function TaskList({ tasks, keyGen }) {
+
+  const tasksList = tasks.map((task) => {
+    return (
+        <Task taskText = {task.text} taskCategory={task.category} key={keyGen()} />
+      )
+      })
+  
   return (
     <div className="tasks">
-      {/* display a list of tasks using Task component */}
+      {tasksList}
     </div>
   );
 }
