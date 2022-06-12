@@ -1,11 +1,11 @@
 import React from "react";
 import Task from './Task';
 
-function TaskList({ tasks, keyGen }) {
+function TaskList({ tasks }) {
 
   const tasksList = tasks.map((task) => {
     return (
-        <Task taskText = {task.text} taskCategory={task.category} key={keyGen()} />
+        <Task taskText = {task.text} taskCategory={task.category} id={task.id} />
       )
       })
   

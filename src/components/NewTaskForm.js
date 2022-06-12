@@ -1,13 +1,13 @@
 import React from "react";
 
-function NewTaskForm({categories, newItemText, newItemCategory, onTextChange, onCategoryChange, onTaskFormSubmit}) {
+function NewTaskForm({categories, newItemText, newItemCategory, onTextChange, onCategoryChange, onSubmit}) {
   const categoryOptions = categories.map(category => {
     return (
-      <option key={category} value={category}>{category}</option>
+      <option id={category} value={category}>{category}</option>
     )
   })
   return (
-    <form className="new-task-form" onSubmit={onTaskFormSubmit}>
+    <form className="new-task-form" onSubmit={onSubmit}>
       <label>
         Details
         <input type="text" name="text" onChange={(e) => onTextChange(e.target.value)}/>
