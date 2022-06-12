@@ -4,6 +4,7 @@ function CategoryFilter({ categories, clickHandler, selectedFilter }) {
   const categoriesEls = categories.map((category) => {
     return (
       <button
+        key={category}
         id={category}
         className={category === selectedFilter ? "selected" : null}
         onClick={clickHandler}

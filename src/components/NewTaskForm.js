@@ -1,9 +1,10 @@
 import React from "react";
 
-function NewTaskForm({categories, newItemText, newItemCategory, onTextChange, onCategoryChange, onSubmit}) {
+function NewTaskForm({categories, onTextChange, onCategoryChange, onSubmit}) {
+  console.log(onTextChange);
   const categoryOptions = categories.map(category => {
     return (
-      <option id={category} value={category}>{category}</option>
+      <option key={category} value={category}>{category}</option>
     )
   })
   return (

@@ -1,13 +1,15 @@
 import React from "react";
 
-function Task({ taskText, taskCategory }) {
+function Task({taskObj, deleteHandler }) {
+
   return (
     <div className="task">
-      <div className="label">{taskCategory}</div>
-      <div className="text">{taskText}</div>
-      <button className="delete">X</button>
+      <div className="label">{taskObj.category}</div>
+      <div className="text">{taskObj.text}</div>
+      <button className="delete" onClick={() => deleteHandler(taskObj)}>X</button>
     </div>
   );
 }
 
 export default Task;
+

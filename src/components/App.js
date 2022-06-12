@@ -5,7 +5,7 @@ import TaskList from "./TaskList";
 
 import { CATEGORIES, TASKS } from "../data";
 //console.log("Here's the data you're working with");
-//console.log(CATEGORIES);
+//console.log(TASKS);
 
 
 function App() {
@@ -13,12 +13,20 @@ function App() {
   const [newItemText, setNewItemText] = useState("");
   const [newItemCategory, setNewItemCategory] = useState("All");
   const [filterState, setFilterState] = useState("All");
+  console.log(newItemText);
 
-  function submitHandler() {
+  function onTaskFormSubmit(event) {
+    event.preventDefault();
     const newTaskList = [
       ...TASKS,
       { text: newItemText, category: newItemCategory },
     ];
+    setTasks(newTaskList);
+  }
+
+  function deleteHandler(taskObj) {
+    console.log(taskObj)
+    const newTaskList = tasks.filter(task => task!==taskObj);
     setTasks(newTaskList);
   }
 
@@ -32,7 +40,7 @@ function App() {
 
   const filteredTasks = filterTasks();
 
-  console.log(filteredTasks);
+  //console.log(filteredTasks);
 
   return (
     <div className="App">
@@ -49,13 +57,11 @@ function App() {
       />
       <NewTaskForm
         categories={CATEGORIES}
-        newItemText={newItemText}
-        newItemCategory={newItemCategory}
         onTextChange={setNewItemText}
         onCategoryChange={setNewItemCategory}
-        onSubmit={submitHandler}
+        onSubmit={onTaskFormSubmit}
       />
-      <TaskList tasks={filteredTasks} />
+      <TaskList tasks={filteredTasks} deleteHandler={deleteHandler} />
     </div>
   );
 }
